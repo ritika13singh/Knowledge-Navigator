@@ -6,13 +6,13 @@ const ROLES = [
   {
     id: 'new_staff',
     title: 'New Staff Member',
-    description: 'Just joined NESsT and learning the ropes',
+    description: 'Just joined Knowledge Navigator and learning the ropes',
     icon: HiOutlineAcademicCap,
     starterQueries: [
-      "What is NESsT?",
-      "Tell me about NESsT's programs",
-      "What does NESsT do?",
-      "Summarize NESsT's work",
+      "What is Knowledge Navigator?",
+      "Tell me about the organization's programs",
+      "What does Knowledge Navigator do?",
+      "Summarize the organization's work",
       "What documents are available?",
     ],
   },
@@ -35,11 +35,11 @@ const ROLES = [
     description: 'Supporting social enterprises with business development',
     icon: HiOutlineUserGroup,
     starterQueries: [
-      "How does NESsT support enterprises?",
+      "How does Knowledge Navigator support enterprises?",
       "What services are provided to enterprises?",
       "Tell me about business development support",
       "What training is available?",
-      "How do enterprises grow with NESsT?",
+      "How do enterprises grow with Knowledge Navigator?",
     ],
   },
   {
@@ -51,7 +51,7 @@ const ROLES = [
       "How is impact measured?",
       "What are the key metrics?",
       "Tell me about reporting",
-      "What is NESsT's social impact?",
+      "What is the organization's social impact?",
       "Summarize impact data",
     ],
   },
@@ -150,7 +150,7 @@ function OnboardingModal({ onClose, onSelectQuery, onSkip }) {
           <>
             <div className="onboarding-header">
               <h2 id="onboarding-title" className="onboarding-title">
-                Welcome to NESsT Knowledge Navigator
+                Welcome to Knowledge Navigator
               </h2>
               <p className="onboarding-subtitle">
                 Select your role to get personalized starter queries and discover relevant institutional knowledge faster.
@@ -206,7 +206,7 @@ function OnboardingModal({ onClose, onSelectQuery, onSkip }) {
                 Getting Started as {selectedRole?.title}
               </h2>
               <p className="onboarding-subtitle">
-                Click any question below to start exploring NESsT's institutional knowledge:
+                Click any question below to start exploring the organization's institutional knowledge:
               </p>
             </div>
 
@@ -240,7 +240,7 @@ function OnboardingModal({ onClose, onSelectQuery, onSkip }) {
                 Add New Admin User
               </h2>
               <p className="onboarding-subtitle">
-                Enter the email address of the user you want to grant admin access to NESsT Staff Portal.
+                Enter the email address of the user you want to grant admin access to Knowledge Navigator Staff Portal.
               </p>
             </div>
 

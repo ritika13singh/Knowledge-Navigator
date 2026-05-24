@@ -35,7 +35,7 @@ function ChatInput({ onSend, disabled, placeholder }) {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={placeholder || 'Message NESst...'}
+          placeholder={placeholder || 'Message Knowledge Navigator...'}
           rows={1}
           disabled={disabled}
           aria-label="Message input"

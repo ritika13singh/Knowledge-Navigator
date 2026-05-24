@@ -25,7 +25,7 @@ def main():
         print("No PDFs in", INGEST_DIR)
         sys.exit(1)
 
-    print("NESsT RAG — clear all data (delete/file per document)\n")
+    print("Knowledge Navigator RAG — clear all data (delete/file per document)\n")
     print(f"Base URL: {BASE_URL}")
     print(f"Ingest dir: {INGEST_DIR}")
     print(f"Files to delete: {len(pdfs)}\n")

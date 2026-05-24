@@ -1,5 +1,5 @@
 """
-NESsT Knowledge Navigator — Prototype API.
+Knowledge Navigator — Prototype API.
 
 Structure:
 - routers/health.py  — /api/health (no auth)
@@ -59,7 +59,7 @@ def _trigger_n8n_sync_on_startup() -> None:
     def _post():
         try:
             import requests
-            requests.post(N8N_SYNC_WEBHOOK_URL, json={"source": "nesst-app-startup"}, timeout=10)
+            requests.post(N8N_SYNC_WEBHOOK_URL, json={"source": "kn-app-startup"}, timeout=10)
         except Exception:
             pass
 
@@ -91,7 +91,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="NESsT Knowledge Navigator (Prototype)",
+    title="Knowledge Navigator (Prototype)",
     description="RAG ingest, retrieve, and Q&A over institutional knowledge.",
     version="0.1.0",
     lifespan=lifespan,

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NESsT Knowledge Navigator</title>
+  <title>Knowledge Navigator</title>
   <style>
     :root {
       --bg: #0f172a;
@@ -173,8 +173,8 @@
 </head>
 <body>
   <header class="header">
-    <h1>NESsT Knowledge Navigator</h1>
-    <p>Ask questions over NESsT institutional knowledge. Answers are based only on ingested documents.</p>
+    <h1>Knowledge Navigator</h1>
+    <p>Ask questions over Knowledge Navigator institutional knowledge. Answers are based only on ingested documents.</p>
   </header>
 
   <main class="chat" id="chat"></main>
@@ -194,11 +194,11 @@
       var sendBtn = document.getElementById("sendBtn");
       if (!chatEl || !inputEl || !sendBtn) return;
 
-      var sessionId = sessionStorage.getItem("nesst_session_id");
+      var sessionId = sessionStorage.getItem("kn_session_id");
       if (!sessionId) {
         sessionId = (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function")
           ? crypto.randomUUID() : "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/x/g, function () { return (Math.random() * 16 | 0).toString(16); });
-        sessionStorage.setItem("nesst_session_id", sessionId);
+        sessionStorage.setItem("kn_session_id", sessionId);
       }
 
     function escapeHtml(s) {
@@ -212,7 +212,7 @@
       if (options == null) options = {};
       var div = document.createElement("div");
       div.className = "message " + role;
-      var avatar = role === "user" ? "You" : "NESsT";
+      var avatar = role === "user" ? "You" : "Knowledge Navigator";
       var body = '<div class="message-avatar">' + escapeHtml(avatar) + "</div>";
       body += '<div class="message-body">' + escapeHtml(content);
       if (options.sources && options.sources.length) {

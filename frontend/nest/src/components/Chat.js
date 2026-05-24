@@ -33,7 +33,7 @@ function Chat() {
   });
   const [showOnboarding, setShowOnboarding] = useState(() => {
     // Show onboarding if user hasn't seen it before
-    return !localStorage.getItem('nesst_onboarding_completed');
+    return !localStorage.getItem('kn_onboarding_completed');
   });
   const [pendingQuery, setPendingQuery] = useState(null);
   const messagesEndRef = useRef(null);
@@ -131,7 +131,7 @@ function Chat() {
 
   const handleOnboardingClose = () => {
     setShowOnboarding(false);
-    localStorage.setItem('nesst_onboarding_completed', 'true');
+    localStorage.setItem('kn_onboarding_completed', 'true');
   };
 
   const handleOnboardingQuery = (query) => {
@@ -255,7 +255,7 @@ function Chat() {
     // Title
     doc.setFontSize(18);
     doc.setFont('helvetica', 'bold');
-    doc.text('NESsT Knowledge Navigator', margin, yPos);
+    doc.text('Knowledge Navigator', margin, yPos);
     yPos += 10;
     
     // Conversation title
@@ -284,7 +284,7 @@ function Chat() {
       doc.setFontSize(10);
       doc.setFont('helvetica', 'bold');
       doc.setTextColor(msg.role === 'user' ? 0 : 34, msg.role === 'user' ? 102 : 139, msg.role === 'user' ? 204 : 34);
-      doc.text(msg.role === 'user' ? 'You:' : 'NESsT Assistant:', margin, yPos);
+      doc.text(msg.role === 'user' ? 'You:' : 'Knowledge Navigator Assistant:', margin, yPos);
       yPos += 6;
       
       // Message content
@@ -327,7 +327,7 @@ function Chat() {
     });
     
     // Save the PDF
-    const fileName = `nesst-chat-${activeConversation?.title?.replace(/[^a-z0-9]/gi, '-') || 'export'}-${Date.now()}.pdf`;
+    const fileName = `kn-chat-${activeConversation?.title?.replace(/[^a-z0-9]/gi, '-') || 'export'}-${Date.now()}.pdf`;
     doc.save(fileName);
   }, [activeMessages, activeConversation]);
 
@@ -430,7 +430,7 @@ function Chat() {
             <ChatInput
               onSend={handleSend}
               disabled={isLoading}
-              placeholder="Message NESst..."
+              placeholder="Message Knowledge Navigator..."
             />
           </main>
         </div>

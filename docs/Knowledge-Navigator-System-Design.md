@@ -1,17 +1,17 @@
-# NESsT AI-Powered Knowledge Navigator — System Design
+# Knowledge Navigator AI-Powered Knowledge Navigator — System Design
 
-System design for the **NESsT Knowledge Navigator** prototype, correlating the [project brief](04_21_23.jpg) with the application's RAG + LLM architecture and defining components and implementation approach.
+System design for the **Knowledge Navigator** prototype, correlating the [project brief](04_21_23.jpg) with the application's RAG + LLM architecture and defining components and implementation approach.
 
 ---
 
 ## 1. Context and Requirements Mapping
 
-### 1.1 From the NESsT Project Brief
+### 1.1 From the Knowledge Navigator Project Brief
 
 
 | Brief section       | Requirement                                                                                                                                       | System design implication                                                                                 |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| **Organization**    | NESsT: 28+ years of institutional knowledge; mission-driven impact investing                                                                      | Single, searchable knowledge graph over all content types                                                 |
+| **Organization**    | Knowledge Navigator: 28+ years of institutional knowledge; mission-driven impact investing                                                                      | Single, searchable knowledge graph over all content types                                                 |
 | **Challenge**       | Reports, manuals, case studies, notes, policies, training records, learnings; manual search; retrieval by “who created it” or “where it’s stored” | Content-based semantic search; RAG over ingested documents; metadata + full-text + vectors                |
 | **Opportunity**     | Faster onboarding; no missed insights (e.g. donor feedback); cross-variable analysis, cause–effect, trends                                        | Thematic Q&A, summarization, analytics API, and (later) trend/relationship extraction                     |
 | **Desired outcome** | ≥60% reduction in time spent searching; actionable, thematically-organized answers; foundation for a **public-facing** resource                   | Measurable search-time metric; RAG + chat API; internal vs public access model; content curation pipeline |
@@ -21,12 +21,12 @@ System design for the **NESsT Knowledge Navigator** prototype, correlating the [
 
 The Knowledge Navigator uses a standard RAG + LLM pattern:
 
-- **RAG insert** → Ingest NESsT documents (PDF, text, CSV) into a searchable index.
+- **RAG insert** → Ingest Knowledge Navigator documents (PDF, text, CSV) into a searchable index.
 - **RAG retrieve** → Natural-language queries returning relevant chunks for answers.
 - **LLM chat** → Anthropic Messages API for grounded Q&A over retrieved context.
 - **File formats** → PDF, text, CSV (comma-separated); defines the initial ingestion surface; DOCX/HTML can be converted to text or PDF in the pipeline.
 
-The Navigator system design **adopts these patterns** and adds NESsT-specific ingestion, access control, metrics, and public-layer design.
+The Navigator system design **adopts these patterns** and adds Knowledge Navigator-specific ingestion, access control, metrics, and public-layer design.
 
 ---
 
@@ -101,7 +101,7 @@ The Navigator system design **adopts these patterns** and adds NESsT-specific in
 | **Metadata**          | At least: source file name, upload/ingest date, optional theme/category; support for “internal only” vs “eligible for public” for future public layer.                                                              |
 
 
-**Developer guide alignment:** Use the same `insert_file()`-style client against the Navigator’s ingest endpoint (or the same backend contract), so existing scripts can target NESsT’s instance with a different base URL and key.
+**Developer guide alignment:** Use the same `insert_file()`-style client against the Navigator’s ingest endpoint (or the same backend contract), so existing scripts can target Knowledge Navigator’s instance with a different base URL and key.
 
 ### 3.2 Search & Retrieval (aligned with Developer Guide RAG Retrieve)
 
@@ -177,7 +177,7 @@ No change to the core developer-guide-style RAG APIs; analytics is an additional
 | Criterion             | n8n                                                                                                      | Alternatives (when to consider)                                  |
 | --------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | **Setup**             | Low-code UI; self-host or cloud; quick to wire HTTP (RAG insert/retrieve), file ops, and schedules       | —                                                                |
-| **Fit for NESsT**     | Nonprofit-friendly (self-hosted, fair licensing); non-developers can inspect or tweak flows              | Airflow/Prefect/Dagster: more “data-engineering” team            |
+| **Fit for Knowledge Navigator**     | Nonprofit-friendly (self-hosted, fair licensing); non-developers can inspect or tweak flows              | Airflow/Prefect/Dagster: more “data-engineering” team            |
 | **RAG / HTTP**        | Native HTTP Request node; easy to call `POST /rag/insert/file` and `POST /rag/retrieve` with Bearer auth | Same possible in Prefect/Dagster with more code                  |
 | **Scheduling**        | Built-in cron/interval triggers                                                                          | Prefect/Dagster/Airflow: stronger for complex DAGs               |
 | **Human-in-the-loop** | Pause for approval, webhook for “curation done”                                                          | Temporal: better for long-running, multi-day workflows           |
@@ -194,7 +194,7 @@ No change to the core developer-guide-style RAG APIs; analytics is an additional
 
 - **Heavy data-engineering:** Large, parallel, Python-centric pipelines → consider **Prefect** or **Dagster** (code-first, good observability).
 - **Long-running, multi-step human workflows:** E.g. multi-day review chains → consider **Temporal** or n8n’s queue/approval patterns.
-- **Already on a platform:** If NESsT standardizes on Power Automate or Zapier, a thin orchestration layer there calling your RAG APIs is also valid; n8n still fits as a self-hosted, API-centric option.
+- **Already on a platform:** If Knowledge Navigator standardizes on Power Automate or Zapier, a thin orchestration layer there calling your RAG APIs is also valid; n8n still fits as a self-hosted, API-centric option.
 
 **Placement in architecture:** The orchestrator (n8n) sits **above or beside** the ingestion pipeline: it triggers and coordinates the steps (validate → extract → chunk → RAG insert); the RAG and search APIs remain unchanged and are called from n8n via HTTP.
 
@@ -239,11 +239,11 @@ No change to the core developer-guide-style RAG APIs; analytics is an additional
 
 ## 7. References
 
-- **NESsT project brief:** `04_21_23.jpg` (organization overview, challenge, opportunity, desired outcome).
+- **Knowledge Navigator project brief:** `04_21_23.jpg` (organization overview, challenge, opportunity, desired outcome).
 - **API and integration patterns:** `backend/services/rag_service.py` and `backend/services/llm_client.py` — RAG insert/retrieve and Anthropic chat.
 - **Orchestration:** [n8n](https://n8n.io) — workflow automation (recommended for prototype); alternatives: [Prefect](https://www.prefect.io), [Dagster](https://dagster.io), [Temporal](https://temporal.io) for code-first or long-running workflows.
-- **NESsT:** [About NESsT](https://www.nesst.org/about-nesst).
+- **Knowledge Navigator:** [About Knowledge Navigator](https://www.kn.org/about-kn).
 
 ---
 
-*This system design defines an architecture for NESsT's AI-powered Knowledge Navigator that can be implemented and measured against the 60% search-time reduction goal.*
+*This system design defines an architecture for the organization's AI-powered Knowledge Navigator that can be implemented and measured against the 60% search-time reduction goal.*

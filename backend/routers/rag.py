@@ -262,7 +262,7 @@ def rag_retrieve_test(user: OptionalUser = None):
     """
     Quick test: run a fixed retrieve and return chunk count + first snippet.
     """
-    out = rag_service.retrieve("What is NESsT commitment to integrity?")
+    out = rag_service.retrieve("What is Knowledge Navigator commitment to integrity?")
     chunks = _chunks_from_retrieved(out)
     first_content = ""
     if chunks and isinstance(chunks[0], dict):
@@ -482,7 +482,7 @@ def query(body: QueryRequest, user: OptionalUser = None):
             len(body.question),
             err_preview,
         )
-        print(f"[NESst RAG] No context: status_code={status_code or '(none)'} error_preview={err_preview!r}")
+        print(f"[Knowledge Navigator RAG] No context: status_code={status_code or '(none)'} error_preview={err_preview!r}")
         # When service returned 200, show why we have no context (filter dropped all vs wrong chunk shape)
         if not status_code:
             keys = list(retrieved.keys()) if isinstance(retrieved, dict) else []
@@ -498,7 +498,7 @@ def query(body: QueryRequest, user: OptionalUser = None):
                         parts.append(f"{k}_str_len={len(v)}")
                     else:
                         parts.append(f"{k}={type(v).__name__}")
-            print(f"[NESst RAG] {', '.join(parts)}")
+            print(f"[Knowledge Navigator RAG] {', '.join(parts)}")
         if status_code == 503:
             answer_msg = "The knowledge service is unreachable. Check your configuration and try again."
             if rag_error:
@@ -523,9 +523,9 @@ def query(body: QueryRequest, user: OptionalUser = None):
         # CRAG fallback: answer from Claude's general knowledge with disclaimer
         if rag_path == "fallback":
             system_content = (
-                "You are the NESsT Knowledge Navigator. No relevant documents were found in the knowledge base "
+                "You are the Knowledge Navigator. No relevant documents were found in the knowledge base "
                 "for this question. Answer from your general knowledge about impact investing, social enterprises, "
-                "and nonprofit management, but clearly note that your answer is not sourced from NESsT documents."
+                "and nonprofit management, but clearly note that your answer is not sourced from Knowledge Navigator documents."
             )
             user_content = f"Question: {body.question}"
             chat_out = llm_client.chat_completions(system_content, user_content)
@@ -578,11 +578,11 @@ def query(body: QueryRequest, user: OptionalUser = None):
         filter_instructions += "Focus on internal organizational content. "
     
     system_content = (
-        "You are the NESsT Knowledge Navigator. You have access to document excerpts about NESsT in the user message; use them as your source of truth for what NESsT is and what the organization has done. "
-        "Do not invent facts about NESsT's past work, outcomes, or history—those must come only from the excerpts. "
+        "You are the Knowledge Navigator. You have access to document excerpts about Knowledge Navigator in the user message; use them as your source of truth for what Knowledge Navigator is and what the organization has done. "
+        "Do not invent facts about the organization's past work, outcomes, or history—those must come only from the excerpts. "
          + filter_instructions +
         "When the user asks a factual question, summarize from the excerpts and stay strictly grounded. "
-        "When the user asks for new ideas, ways to build on progress, creative suggestions, or 'what could we do next': (1) First briefly summarize what the excerpts say about NESsT's work and progress so far. (2) Then, building only on that, suggest additional ideas or next steps that logically extend the work described. You may be creative in proposing future directions and ideas as long as they are clearly built on the context from the excerpts; do not invent past facts. Use clear paragraphs or bullet points but do not use fixed section headings like 'What the material shows' or 'Ideas to build on this'; vary your phrasing naturally. "
+        "When the user asks for new ideas, ways to build on progress, creative suggestions, or 'what could we do next': (1) First briefly summarize what the excerpts say about the organization's work and progress so far. (2) Then, building only on that, suggest additional ideas or next steps that logically extend the work described. You may be creative in proposing future directions and ideas as long as they are clearly built on the context from the excerpts; do not invent past facts. Use clear paragraphs or bullet points but do not use fixed section headings like 'What the material shows' or 'Ideas to build on this'; vary your phrasing naturally. "
         "If the excerpts contain recommendations, learnings, or outcomes, you may also derive those and present them as action items or insights. "
         "If the user message includes a 'Previous conversation' section, use it to interpret the current question (e.g. follow-ups like 'tell me more', 'what about in Brazil?', 'expand on that'). "
         "Only when the excerpts truly contain nothing relevant to the question, respond with: 'The provided documents do not contain information about this.' "
@@ -609,7 +609,7 @@ def query(body: QueryRequest, user: OptionalUser = None):
             total += len(line) + 1
         if lines:
             conversation_block = "\n\nPrevious conversation:\n" + "\n".join(lines) + "\n\n"
-    user_content = f"Document excerpts about NESsT (use for facts and as basis for any ideas):\n\n{context[:12000]}\n\n{conversation_block}Current question: {body.question}"
+    user_content = f"Document excerpts about Knowledge Navigator (use for facts and as basis for any ideas):\n\n{context[:12000]}\n\n{conversation_block}Current question: {body.question}"
     chat_out = llm_client.chat_completions(system_content, user_content, temperature=0.3)
     answer = chat_out.get("answer") or chat_out.get("error") or "No answer generated."
     latency = round(time.perf_counter() - start, 3)

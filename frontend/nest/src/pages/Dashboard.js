@@ -184,7 +184,7 @@ function DriveMonitorTab() {
 
         <div className="dp-field">
           <label className="dp-label">Folder name <span className="dp-optional">(optional)</span></label>
-          <input className="dp-input" type="text" placeholder="e.g. NESsT Knowledge" value={folderName} onChange={(e) => setFolderName(e.target.value)} disabled={status?.running} />
+          <input className="dp-input" type="text" placeholder="e.g. Knowledge Navigator Knowledge" value={folderName} onChange={(e) => setFolderName(e.target.value)} disabled={status?.running} />
         </div>
 
         <div className="dp-actions">

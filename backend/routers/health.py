@@ -15,6 +15,6 @@ def health(user: OptionalUser = None):
     """Health check; does not require auth."""
     return {
         "status": "ok",
-        "service": "nesst-knowledge-navigator",
+        "service": "knowledge-navigator",
         "authenticated": "yes" if user is not None else "no",
     }

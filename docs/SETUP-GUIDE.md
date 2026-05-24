@@ -1,4 +1,4 @@
-# NESsT Knowledge Navigator — Setup Guide
+# Knowledge Navigator — Setup Guide
 
 Follow these steps in order. All commands assume you are in the project root.
 
@@ -49,7 +49,7 @@ No spaces around `=`. Example:
 
 ```
 OPENAI_API_KEY=your_openai_api_key_here
-DATABASE_URL=postgresql://nesst_app:your_password@localhost:5432/nesst
+DATABASE_URL=postgresql://kn_app:your_password@localhost:5432/kn_db
 ```
 
 ---
@@ -66,10 +66,10 @@ brew services start postgresql@16
 **Docker:**
 
 ```bash
-docker run -d --name nesst-pg -e POSTGRES_PASSWORD=nesst -e POSTGRES_DB=nesst -p 5432:5432 postgres:16-alpine
+docker run -d --name kn-pg -e POSTGRES_PASSWORD=kn -e POSTGRES_DB=kn -p 5432:5432 postgres:16-alpine
 ```
 
-Then use in `.env`: `DATABASE_URL=postgresql://postgres:nesst@localhost:5432/nesst` and skip step 5 (database already exists).
+Then use in `.env`: `DATABASE_URL=postgresql://postgres:kn@localhost:5432/kn_db` and skip step 5 (database already exists).
 
 ---
 
@@ -78,13 +78,13 @@ Then use in `.env`: `DATABASE_URL=postgresql://postgres:nesst@localhost:5432/nes
 On macOS the default PostgreSQL user is your Mac username, not `postgres`. Run:
 
 ```bash
-psql -d postgres -f scripts/init_nesst_db.sql
+psql -d postgres -f scripts/init_kn_db.sql
 ```
 
-This creates user `nesst_app`, database `nesst`, and permissions. Then in `.env` set:
+This creates user `kn_app`, database `kn`, and permissions. Then in `.env` set:
 
 ```
-DATABASE_URL=postgresql://nesst_app:change_me_in_production@localhost:5432/nesst
+DATABASE_URL=postgresql://kn_app:change_me_in_production@localhost:5432/kn_db
 ```
 
 (Change the password in production.)
@@ -92,7 +92,7 @@ DATABASE_URL=postgresql://nesst_app:change_me_in_production@localhost:5432/nesst
 Verify:
 
 ```bash
-psql "postgresql://nesst_app:change_me_in_production@localhost:5432/nesst" -c "SELECT 1;"
+psql "postgresql://kn_app:change_me_in_production@localhost:5432/kn_db" -c "SELECT 1;"
 ```
 
 ---
@@ -152,7 +152,7 @@ On login, the app checks the user's email against the `admin_users` table. If th
 
 1. Ensure the app has run once with `DATABASE_URL` set so the `admin_users` table exists.
 2. Add an admin by email:  
-   `psql "postgresql://nesst_app:YOUR_PASSWORD@localhost:5432/nesst" -c "INSERT INTO admin_users (email) VALUES ('admin@example.com') ON CONFLICT (email) DO NOTHING;"`
+   `psql "postgresql://kn_app:YOUR_PASSWORD@localhost:5432/kn_db" -c "INSERT INTO admin_users (email) VALUES ('admin@example.com') ON CONFLICT (email) DO NOTHING;"`
 3. The user must sign out and sign in again for `is_admin` to be set.
 
 ---
@@ -162,7 +162,7 @@ On login, the app checks the user's email against the `admin_users` table. If th
 - Open **http://localhost:8000** in your browser.
 - Upload a file (PDF, TXT, or CSV) and ask a question.
 
-If you use a PostgreSQL GUI (DBeaver, pgAdmin, TablePlus), connect to the `nesst` database with the same user/password as in `DATABASE_URL`. After the app has started once with `DATABASE_URL` set, you will see tables `query_metrics` and `feedback` under **Schemas → public → Tables**. Refresh the tree if they do not appear.
+If you use a PostgreSQL GUI (DBeaver, pgAdmin, TablePlus), connect to the `kn` database with the same user/password as in `DATABASE_URL`. After the app has started once with `DATABASE_URL` set, you will see tables `query_metrics` and `feedback` under **Schemas → public → Tables**. Refresh the tree if they do not appear.
 
 ---
 

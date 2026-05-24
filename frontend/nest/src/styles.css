@@ -1,9 +1,9 @@
 /* ========== Base & reset ========== */
 :root {
   --side-nav-width: 280px;
-  --nesst-green: #00c789;
-  --nesst-green-dark: #00a870;
-  --nesst-green-light: #00e099;
+  --kn-green: #00c789;
+  --kn-green-dark: #00a870;
+  --kn-green-light: #00e099;
 }
 
 *,
@@ -133,7 +133,7 @@ code {
   --chat-accent: var(--accent);
   --header-bg: linear-gradient(135deg, #0a2f24 0%, #00a870 50%, #00c789 100%);
   --assistant-icon-color: #00c789;
-  --nesst-green: #00c789;
+  --kn-green: #00c789;
   --scrollbar-track: #1a1a1a;
   --scrollbar-thumb: #404040;
   --scrollbar-thumb-hover: #525252;
@@ -191,7 +191,7 @@ code {
   --chat-accent: var(--accent);
   --header-bg: linear-gradient(135deg, #0a2f24 0%, #00a870 50%, #00c789 100%);
   --assistant-icon-color: #00a870;
-  --nesst-green: #00c789;
+  --kn-green: #00c789;
   --scrollbar-track: #e2e8f0;
   --scrollbar-thumb: #cbd5e1;
   --scrollbar-thumb-hover: #94a3b8;
@@ -826,8 +826,8 @@ code {
   pointer-events: none;
 }
 
-/* ========== NesstLogo ========== */
-.nesst-logo {
+/* ========== AppLogo ========== */
+.kn-logo {
   display: block;
   height: auto;
   max-height: 100%;
@@ -837,25 +837,25 @@ code {
   mix-blend-mode: lighten;
 }
 
-[data-theme="light"] .nesst-logo {
+[data-theme="light"] .kn-logo {
   filter: invert(1) hue-rotate(180deg);
   mix-blend-mode: multiply;
 }
 
-.app-header .nesst-logo {
+.app-header .kn-logo {
   filter: none;
   mix-blend-mode: lighten;
 }
 
-.nesst-logo--small {
+.kn-logo--small {
   max-height: 28px;
 }
 
-.nesst-logo--medium {
+.kn-logo--medium {
   max-height: 36px;
 }
 
-.nesst-logo--large {
+.kn-logo--large {
   max-height: 48px;
 }
 

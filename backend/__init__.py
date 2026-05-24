@@ -1,1 +1,1 @@
-# NESsT Knowledge Navigator backend
+# Knowledge Navigator backend

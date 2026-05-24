@@ -7,7 +7,7 @@ dotenv.load_dotenv()
 from backend.services import llm_client
 
 result = llm_client.chat_completions(
-    system_content="You are a helpful assistant for the NESsT Knowledge Navigator.",
+    system_content="You are a helpful assistant for the Knowledge Navigator.",
     user_content="In one sentence, what is impact investing?",
     temperature=0.3,
 )

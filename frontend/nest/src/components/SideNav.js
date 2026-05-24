@@ -8,7 +8,7 @@ import {
   HiOutlineCollection,
   HiOutlineFolder,
 } from 'react-icons/hi';
-import NesstLogo from './NesstLogo';
+import AppLogo from './AppLogo';
 
 const HISTORY_ICONS = [
   HiOutlineStar,
@@ -39,7 +39,7 @@ function SideNav({ chats = [], activeChatId, onNewChat, onSelectChat, open = tru
         aria-label="Chat history"
       >
         <div className="side-nav__brand">
-          <NesstLogo size="small" />
+          <AppLogo size="small" />
         </div>
         <button
           type="button"

@@ -1,4 +1,4 @@
-"""Configuration for NESsT Knowledge Navigator."""
+"""Configuration for Knowledge Navigator."""
 import os
 from pathlib import Path
 
@@ -13,7 +13,7 @@ OPENAI_CHAT_MODEL = os.getenv("OPENAI_CHAT_MODEL", "gpt-4o-mini")
 OPENAI_GRADER_MODEL = os.getenv("OPENAI_GRADER_MODEL", "gpt-4o-mini")
 
 # Optional: app name for logging and context
-APP_NAME = os.getenv("APPNAME", "nesst-knowledge-navigator")
+APP_NAME = os.getenv("APPNAME", "knowledge-navigator")
 
 # Prototype paths
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -47,5 +47,5 @@ CORS_ORIGINS = [o.strip() for o in _cors.split(",") if o.strip()] if _cors else 
 # JWT secret for signing session tokens (use a long random string in production)
 JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "").strip() or None
 # Session cookie name and max age (seconds; 7 days default)
-AUTH_COOKIE_NAME = "nesst_session"
+AUTH_COOKIE_NAME = "kn_session"
 AUTH_COOKIE_MAX_AGE = int(os.getenv("AUTH_COOKIE_MAX_AGE", "604800"))  # 7 days

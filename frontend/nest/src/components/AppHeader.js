@@ -52,7 +52,7 @@ function AppHeader({ onMenuClick, sidebarOpen, showMenuAsLinkToHome = false, isD
         </button>
       )}
       <h1 className="app-header__title">
-        <span className="app-header__title-suffix">NESsT Knowledge Navigator</span>
+        <span className="app-header__title-suffix">Knowledge Navigator</span>
       </h1>
       <div className="app-header__actions">
         {isPublicPortal ? (

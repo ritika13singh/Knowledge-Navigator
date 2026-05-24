@@ -6,7 +6,7 @@ from backend.config import PROJECT_ROOT
 
 _client = None
 _collection = None
-COLLECTION_NAME = "nesst"
+COLLECTION_NAME = "kn"
 CHROMA_DIR = PROJECT_ROOT / "chroma_db"
 
 def get_collection():

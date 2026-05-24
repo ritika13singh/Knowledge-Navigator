@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run NESsT Knowledge Navigator prototype."""
+"""Run Knowledge Navigator prototype."""
 import sys
 from pathlib import Path
 

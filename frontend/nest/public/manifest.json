@@ -1,9 +1,9 @@
 {
-  "short_name": "NESst",
-  "name": "NESst – RAG Assistant",
+  "short_name": "Knowledge Navigator",
+  "name": "Knowledge Navigator – RAG Assistant",
   "icons": [
     {
-      "src": "nesst-logo.png",
+      "src": "kn-logo.png",
       "type": "image/png",
       "sizes": "any"
     }

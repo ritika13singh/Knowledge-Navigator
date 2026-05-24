@@ -52,7 +52,7 @@ def main():
         print("If the app is on another port: BASE_URL=http://localhost:PORT python scripts/ingest_hackathon_folder.py")
         sys.exit(1)
 
-    print("NESsT RAG — ingest documents folder\n")
+    print("Knowledge Navigator RAG — ingest documents folder\n")
     print(f"Base URL: {BASE_URL}")
     print(f"Ingest dir: {INGEST_DIR}")
     print(f"Files to ingest: {len(files)}\n")

@@ -1,6 +1,6 @@
-# NESsT Knowledge Navigator
+# Knowledge Navigator
 
-A document Q&A platform built for NESsT that lets staff search and query institutional knowledge using Retrieval-Augmented Generation (RAG). Upload PDFs, Word documents, and CSVs — then ask questions in plain English and get grounded answers with source citations.
+A document Q&A platform built for Knowledge Navigator that lets staff search and query institutional knowledge using Retrieval-Augmented Generation (RAG). Upload PDFs, Word documents, and CSVs — then ask questions in plain English and get grounded answers with source citations.
 
 ---
 
@@ -131,13 +131,13 @@ In production the React build is served directly by FastAPI (no separate web ser
 ├── chroma_db/                   # ChromaDB persistent vector store (auto-created)
 ├── uploads/                     # Temporary storage for API-uploaded files
 ├── scripts/
-│   ├── init_nesst_db.sql        # PostgreSQL setup DDL
+│   ├── init_kn_db.sql        # PostgreSQL setup DDL
 │   ├── ingest_hackathon_folder.py
 │   └── rag_clear_and_reingest.py
 ├── docs/
 │   ├── SETUP-GUIDE.md
 │   ├── README-PROTOTYPE.md
-│   └── NESst-Knowledge-Navigator-System-Design.md
+│   └── Knowledge Navigator-Knowledge-Navigator-System-Design.md
 ├── .env.example                 # Copy to .env and fill in
 ├── requirements.txt
 └── run.py                       # Backend launcher (python run.py)
@@ -161,7 +161,7 @@ In production the React build is served directly by FastAPI (no separate web ser
 
 ```bash
 git clone <repo-url>
-cd "NESst Knowledge Navigator"
+cd "Knowledge Navigator"
 
 python3 -m venv .venv
 source .venv/bin/activate        # macOS/Linux
@@ -242,9 +242,9 @@ All variables are read from `.env` in the project root. None crash the app if mi
 | `GOOGLE_CLIENT_ID` | No | — | OAuth 2.0 client ID from Google Cloud Console |
 | `GOOGLE_CLIENT_SECRET` | No | — | OAuth 2.0 client secret |
 | `FRONTEND_ORIGIN` | No | `http://localhost:3001` | URL the browser runs on — used for post-login redirect and CORS |
-| `DATABASE_URL` | No | — | PostgreSQL connection string, e.g. `postgresql://user:pass@localhost:5432/nesst`. If unset, metrics/history are no-ops. |
+| `DATABASE_URL` | No | — | PostgreSQL connection string, e.g. `postgresql://user:pass@localhost:5432/kn_db`. If unset, metrics/history are no-ops. |
 | `PORT` | No | `8000` | Backend port |
-| `APP_NAME` | No | `nesst-knowledge-navigator` | Application name used in logs |
+| `APP_NAME` | No | `knowledge-navigator` | Application name used in logs |
 | `N8N_SYNC_WEBHOOK_URL` | No | — | If set, a POST is fired to this URL on app startup (triggers n8n to sync Drive/uploads) |
 | `DRIVE_WEBHOOK_SECRET` | No | — | If set, validates `X-Drive-Secret` header on `/api/drive/watch/tick` |
 | `GOOGLE_APPLICATION_CREDENTIALS` | No | — | Path to a Google service account JSON file (for Drive API without user OAuth) |
@@ -254,7 +254,7 @@ All variables are read from `.env` in the project root. None crash the app if mi
 
 ## API Reference
 
-All endpoints are prefixed with `/api`. Authentication uses an httpOnly JWT cookie (`nesst_session`) set at login.
+All endpoints are prefixed with `/api`. Authentication uses an httpOnly JWT cookie (`kn_session`) set at login.
 
 ### Health
 
@@ -414,20 +414,20 @@ The app runs fully without PostgreSQL — metrics endpoints return empty data an
 ### 1. Create the database
 
 ```bash
-psql postgres < scripts/init_nesst_db.sql
+psql postgres < scripts/init_kn_db.sql
 ```
 
 Or manually:
 
 ```sql
-CREATE USER nesst_app WITH PASSWORD 'yourpassword';
-CREATE DATABASE nesst OWNER nesst_app;
+CREATE USER kn_app WITH PASSWORD 'yourpassword';
+CREATE DATABASE kn_db OWNER kn_app;
 ```
 
 ### 2. Set DATABASE_URL
 
 ```dotenv
-DATABASE_URL=postgresql://nesst_app:yourpassword@localhost:5432/nesst
+DATABASE_URL=postgresql://kn_app:yourpassword@localhost:5432/kn_db
 ```
 
 Tables are created automatically on app startup (`query_metrics`, `feedback`, `admin_users`, `documents`, `chat_conversations`).
@@ -437,8 +437,8 @@ Tables are created automatically on app startup (`query_metrics`, `feedback`, `a
 ```bash
 brew install postgresql@14
 brew services start postgresql@14
-createdb nesst
-psql nesst < scripts/init_nesst_db.sql
+createdb kn
+psql kn < scripts/init_kn_db.sql
 ```
 
 ---
@@ -455,7 +455,7 @@ psql nesst < scripts/init_nesst_db.sql
 
 ```bash
 curl -X POST http://localhost:8000/api/rag/insert/file \
-  -H "Cookie: nesst_session=<your-jwt>" \
+  -H "Cookie: kn_session=<your-jwt>" \
   -F "file=@report.pdf" \
   -F "title=Annual Report 2024" \
   -F 'themes=["climate","impact"]' \

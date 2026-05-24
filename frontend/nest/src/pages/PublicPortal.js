@@ -16,14 +16,14 @@ Key characteristics:
 • Impact-focused: Measures success by social outcomes, not just profits
 • Sustainable: Aims for financial self-sufficiency
 
-NESsT supports social enterprises that create employment and income opportunities for people living in poverty.`,
+Knowledge Navigator supports social enterprises that create employment and income opportunities for people living in poverty.`,
   },
   {
-    id: 'nesst-support',
+    id: 'kn-support',
     category: 'Getting Started',
-    title: 'How NESsT Supports Social Enterprises',
-    summary: 'Discover the comprehensive support NESsT provides to help social enterprises grow and scale.',
-    content: `NESsT provides a unique combination of patient capital and tailored capacity development to help social enterprises achieve sustainable growth.
+    title: 'How Knowledge Navigator Supports Social Enterprises',
+    summary: 'Discover the comprehensive support Knowledge Navigator provides to help social enterprises grow and scale.',
+    content: `Knowledge Navigator provides a unique combination of patient capital and tailored capacity development to help social enterprises achieve sustainable growth.
 
 Our support includes:
 • Investment Capital: Flexible financing adapted to enterprise needs
@@ -122,43 +122,43 @@ Tips for success:
 const FAQS = [
   {
     id: 'faq-1',
-    question: 'What types of social enterprises does NESsT support?',
-    answer: 'NESsT supports social enterprises that create dignified employment and income opportunities for people living in poverty. We focus on enterprises in sectors like sustainable agriculture, artisan production, recycling, and services that employ or benefit marginalized communities.',
+    question: 'What types of social enterprises does Knowledge Navigator support?',
+    answer: 'Knowledge Navigator supports social enterprises that create dignified employment and income opportunities for people living in poverty. We focus on enterprises in sectors like sustainable agriculture, artisan production, recycling, and services that employ or benefit marginalized communities.',
   },
   {
     id: 'faq-2',
-    question: 'How can I apply for NESsT support?',
+    question: 'How can I apply for Knowledge Navigator support?',
     answer: 'Social enterprises can apply through our website during open application periods. We look for enterprises with a clear social mission, a viable business model, potential for growth, and commitment to measuring impact. Visit our main website for current opportunities.',
   },
   {
     id: 'faq-3',
-    question: 'What kind of investment does NESsT provide?',
-    answer: 'NESsT provides patient capital in the form of loans, equity, and quasi-equity investments. Our investments are tailored to each enterprise\'s needs and stage of development, typically ranging from $50,000 to $500,000 over multiple rounds.',
+    question: 'What kind of investment does Knowledge Navigator provide?',
+    answer: 'Knowledge Navigator provides patient capital in the form of loans, equity, and quasi-equity investments. Our investments are tailored to each enterprise\'s needs and stage of development, typically ranging from $50,000 to $500,000 over multiple rounds.',
   },
   {
     id: 'faq-4',
-    question: 'How long does NESsT work with portfolio enterprises?',
-    answer: 'NESsT typically works with enterprises for 5-7 years, providing ongoing support as they grow. This long-term approach allows us to provide patient capital and sustained capacity building that enterprises need to achieve sustainable growth.',
+    question: 'How long does Knowledge Navigator work with portfolio enterprises?',
+    answer: 'Knowledge Navigator typically works with enterprises for 5-7 years, providing ongoing support as they grow. This long-term approach allows us to provide patient capital and sustained capacity building that enterprises need to achieve sustainable growth.',
   },
   {
     id: 'faq-5',
-    question: 'What regions does NESsT operate in?',
-    answer: 'NESsT currently operates in Latin America (Brazil, Chile, Colombia, Peru) and Central Europe (Romania, Croatia). We focus on regions where we can build deep local expertise and networks to support social enterprises effectively.',
+    question: 'What regions does Knowledge Navigator operate in?',
+    answer: 'Knowledge Navigator currently operates in Latin America (Brazil, Chile, Colombia, Peru) and Central Europe (Romania, Croatia). We focus on regions where we can build deep local expertise and networks to support social enterprises effectively.',
   },
   {
     id: 'faq-6',
-    question: 'How does NESsT measure impact?',
-    answer: 'NESsT tracks both social and financial metrics for all portfolio enterprises. Key impact indicators include jobs created, income generated for beneficiaries, and people reached. We also track enterprise financial health, revenue growth, and sustainability metrics.',
+    question: 'How does Knowledge Navigator measure impact?',
+    answer: 'Knowledge Navigator tracks both social and financial metrics for all portfolio enterprises. Key impact indicators include jobs created, income generated for beneficiaries, and people reached. We also track enterprise financial health, revenue growth, and sustainability metrics.',
   },
   {
     id: 'faq-7',
-    question: 'Can I volunteer or mentor with NESsT?',
-    answer: 'Yes! NESsT welcomes skilled volunteers and mentors who can support our portfolio enterprises. We particularly need expertise in areas like finance, marketing, operations, and technology. Contact us through our main website to learn about opportunities.',
+    question: 'Can I volunteer or mentor with Knowledge Navigator?',
+    answer: 'Yes! Knowledge Navigator welcomes skilled volunteers and mentors who can support our portfolio enterprises. We particularly need expertise in areas like finance, marketing, operations, and technology. Contact us through our main website to learn about opportunities.',
   },
   {
     id: 'faq-8',
-    question: 'How can donors or investors support NESsT?',
-    answer: 'Donors and investors can support NESsT through grants to our operating fund, investments in our enterprise fund, or sponsorship of specific programs. We offer various engagement levels and reporting to match donor interests and requirements.',
+    question: 'How can donors or investors support Knowledge Navigator?',
+    answer: 'Donors and investors can support Knowledge Navigator through grants to our operating fund, investments in our enterprise fund, or sponsorship of specific programs. We offer various engagement levels and reporting to match donor interests and requirements.',
   },
 ];
 
@@ -361,17 +361,17 @@ function PublicPortal() {
                 <div className="public-portal__chat-welcome">
                   <HiOutlineChat className="public-portal__chat-welcome-icon" />
                   <h3>Ask a Question</h3>
-                  <p>Have a question about social enterprises or NESsT's work? Ask below and we'll help you find the answer.</p>
+                  <p>Have a question about social enterprises or the organization's work? Ask below and we'll help you find the answer.</p>
                   <div className="public-portal__suggested-questions">
                     <p>Try asking:</p>
-                    <button type="button" onClick={() => setChatQuery('What is NESsT?')}>
-                      What is NESsT?
+                    <button type="button" onClick={() => setChatQuery('What is Knowledge Navigator?')}>
+                      What is Knowledge Navigator?
                     </button>
                     <button type="button" onClick={() => setChatQuery('How can I apply for support?')}>
                       How can I apply for support?
                     </button>
-                    <button type="button" onClick={() => setChatQuery('What regions does NESsT operate in?')}>
-                      What regions does NESsT operate in?
+                    <button type="button" onClick={() => setChatQuery('What regions does Knowledge Navigator operate in?')}>
+                      What regions does Knowledge Navigator operate in?
                     </button>
                   </div>
                 </div>
@@ -414,7 +414,7 @@ function PublicPortal() {
       </main>
 
       <footer className="public-portal__footer">
-        <p>© {new Date().getFullYear()} NESsT. Empowering social enterprises to create lasting change.</p>
+        <p>© {new Date().getFullYear()} Knowledge Navigator. Empowering social enterprises to create lasting change.</p>
       </footer>
     </div>
   );

@@ -43,7 +43,7 @@ function LoginPage() {
       <div className="login-page__card">
         <h1 className="login-page__title">Sign in</h1>
         <p className="login-page__subtitle">
-          Sign in with Google to use NESst with your account. You can still use the chat without signing in.
+          Sign in with Google to use Knowledge Navigator with your account. You can still use the chat without signing in.
         </p>
         {error && (
           <p className="login-page__error" role="alert">
