@@ -1,0 +1,15 @@
+{
+  "short_name": "NESst",
+  "name": "NESst – RAG Assistant",
+  "icons": [
+    {
+      "src": "nesst-logo.png",
+      "type": "image/png",
+      "sizes": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#00c789",
+  "background_color": "#0d0d0d"
+}

@@ -1,0 +1,11 @@
+*.code-workspace
+.env
+uploads/
+__pycache__/
+*.pyc
+.venv/
+venv/
+chroma_db/
+PS4 NESsT Hackathon
+04_21_23.jpg
+data/documents
